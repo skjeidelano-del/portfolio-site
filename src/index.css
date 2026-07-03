@@ -1,0 +1,314 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital@0;1&display=swap');
+
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --border-color: #e5e5e5;
+  --hover-color: #f5f5f5;
+  --accent-color: #000000;
+  
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: 'Playfair Display', serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  margin-bottom: 1rem;
+}
+
+h1 { 
+  font-size: clamp(3rem, 8vw, 8rem); 
+  text-transform: uppercase; 
+}
+
+h2 { 
+  font-size: clamp(2rem, 5vw, 4rem); 
+  text-transform: uppercase;
+}
+
+h3 { font-size: 1.5rem; }
+
+p {
+  font-size: 1.125rem;
+  font-weight: 300;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--text-color);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.6;
+}
+
+/* Utility Classes */
+.container {
+  width: 100%;
+  padding: 0 4vw; /* Edge-to-edge feel */
+  max-width: 2000px;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+}
+
+.flex {
+  display: flex;
+}
+
+/* Tension & Spacing */
+.mt-huge { margin-top: clamp(4rem, 15vw, 12rem); }
+.mb-huge { margin-bottom: clamp(4rem, 15vw, 12rem); }
+.py-huge { padding-top: clamp(4rem, 10vw, 10rem); padding-bottom: clamp(4rem, 10vw, 10rem); }
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  background-color: var(--text-color);
+  color: var(--bg-color);
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid var(--text-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--text-color);
+}
+
+.btn-outline:hover {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+}
+
+/* Specific Layouts */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 4vw;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.navbar-brand {
+  font-weight: 800;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-link {
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+}
+
+.footer {
+  border-top: 1px solid var(--border-color);
+  padding: 4rem 4vw;
+  display: flex;
+  justify-content: space-between;
+  margin-top: clamp(4rem, 10vw, 10rem);
+}
+
+.footer-text {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+/* Modal Overlays */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 3rem;
+}
+
+.flipbook-modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(245, 245, 245, 0.85);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(20px);
+}
+
+.close-btn {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background: none;
+  border: none;
+  color: #111;
+  cursor: pointer;
+  z-index: 1010;
+  transition: transform 0.2s ease;
+}
+
+.close-btn:hover {
+  transform: scale(1.1);
+}
+
+.footer {
+  margin-top: auto;
+  padding: 4rem 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #eee;
+}
+
+/* PDF Thumbnail Effects */
+.thumbnail-page .react-pdf__Page__canvas {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-overlay {
+  opacity: 0;
+}
+
+.project-card:hover .thumbnail-page .react-pdf__Page__canvas {
+  transform: scale(1.05);
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+.flipbook-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Swiper Customizations */
+.pdf-document {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.mySwiper {
+  width: 100%;
+  padding: 50px 0;
+}
+
+.pdf-slide {
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.6s ease;
+  opacity: 0.3; /* Make side pages even less important */
+}
+
+.swiper-slide-active {
+  opacity: 1;
+}
+
+.slide-inner {
+  background-color: transparent;
+  /* Subtle light shadow instead of heavy dark area */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  display: flex;
+  transform: scale(0.5); /* Significantly shrink side pages */
+  filter: blur(8px);
+  /* Smooth transition for size and blur */
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), filter 0.6s ease;
+}
+
+.swiper-slide-active .slide-inner {
+  transform: scale(1);
+  filter: blur(0px);
+}
+
+/* Make react-pdf canvas adaptive! */
+.react-pdf__Page__canvas {
+  max-width: 85vw !important;
+  max-height: 80vh !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain;
+}
+
+/* Swiper Navigation Buttons styling */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #222 !important;
+  transition: transform 0.2s ease;
+}
+
+/* Swiper Pagination styling */
+.swiper-pagination {
+  bottom: 45px !important;
+}
+.swiper-pagination-bullet {
+  background: #888 !important;
+  opacity: 0.5 !important;
+  width: 8px !important;
+  height: 8px !important;
+  transition: all 0.3s ease;
+}
+.swiper-pagination-bullet-active {
+  background: #111 !important;
+  opacity: 1 !important;
+  transform: scale(1.2);
+}
+
+.swiper-button-next:hover {
+  transform: scale(1.1);
+}
+
+.swiper-button-prev:hover {
+  transform: scale(1.1);
+}
